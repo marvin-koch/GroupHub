@@ -14,7 +14,7 @@ import com.example.grouphub.databinding.ActivityMainBinding;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+public class group extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
