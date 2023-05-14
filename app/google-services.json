@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "230713885405",
+    "project_id": "grouphub-73beb",
+    "storage_bucket": "grouphub-73beb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230713885405:android:887b78bd7efe1087a55134",
+        "android_client_info": {
+          "package_name": "com.example.grouphub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230713885405-q3qrbvk9offbcitun3cbnje0lrfmnvs3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTDIMT5ZCPOe9o21PwTwfbDefeW6fXCS4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230713885405-q3qrbvk9offbcitun3cbnje0lrfmnvs3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
