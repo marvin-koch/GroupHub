@@ -14,30 +14,33 @@ import com.example.grouphub.databinding.ActivityMainBinding;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class group extends AppCompatActivity {
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.TextView;
 
-    private ActivityMainBinding binding;
+public class group extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.group_info);
 
-        FirebaseApp.initializeApp(this);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        // Inflate the layout to access its views
+        // Replace "activity_main" with your actual layout file name
+        // For example, if your layout file is "my_layout.xml", use R.layout.my_layout
+        setContentView(R.layout.group_info);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+        // Access the TextView using its id from the inflated layout
+        TextView tv = findViewById(R.id.text_name);
+        tv.setText("Group name here");
+        TextView tv1 = findViewById(R.id.text_desc);
+        tv1.setText("Group description here");
+        TextView tv2 = findViewById(R.id.text_member);
+        tv1.setText("Group members here");
     }
 
 
+
+
 }
+
