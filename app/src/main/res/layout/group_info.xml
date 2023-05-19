@@ -9,52 +9,82 @@
         android:id="@+id/imageView3"
         android:layout_width="149dp"
         android:layout_height="144dp"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="116dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="54dp"
+        app:layout_constraintBottom_toTopOf="@+id/text_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/text_name"
         android:layout_width="214dp"
         android:layout_height="79dp"
-        android:text="Groupname"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="421dp"
-        android:textSize="24sp"
-        android:textColor="#555555"
-        android:gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         android:background="#AED6F1"
-        android:padding="12dp"/>
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Groupname"
+        android:textColor="#555555"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_desc"
+        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="103dp"
         android:layout_height="61dp"
-        android:text="Join"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="35dp"
         android:background="#555555"
-        tools:layout_editor_absoluteX="362dp"
-        tools:layout_editor_absoluteY="429dp" />
+        android:text="Join"
+        app:layout_constraintBottom_toTopOf="@+id/text_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_name"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.187" />
 
     <TextView
         android:id="@+id/text_desc"
         android:layout_width="346dp"
         android:layout_height="148dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="17dp"
+        android:gravity="center"
         android:text="TextView"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="540dp"
-        android:textSize="16sp"
         android:textColor="#555555"
-        android:gravity="center"/>
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_member"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_name" />
 
     <TextView
         android:id="@+id/text_member"
         android:layout_width="347dp"
         android:layout_height="153dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="37dp"
+        android:gravity="center"
         android:text="TextView"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="736dp"
-        android:textSize="16sp"
         android:textColor="#555555"
-        android:gravity="center"/>
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_desc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
