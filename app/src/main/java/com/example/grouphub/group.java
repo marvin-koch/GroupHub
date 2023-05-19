@@ -1,6 +1,7 @@
 package com.example.grouphub;
-
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -37,6 +38,9 @@ public class group extends Activity {
         tv1.setText("Group description here");
         TextView tv2 = findViewById(R.id.text_member);
         tv1.setText("Group members here");
+        ImageView Iv = findViewById(R.id.imageView3);
+        Iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_dashboard_black_24dp));
+
     }
 
 
