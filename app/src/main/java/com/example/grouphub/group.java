@@ -1,22 +1,13 @@
 package com.example.grouphub;
-import android.graphics.drawable.Drawable;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.widget.ImageView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.grouphub.databinding.ActivityMainBinding;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.FirebaseDatabase;
-
+import android.view.View;
+import android.widget.Button;
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class group extends Activity {
@@ -40,6 +31,24 @@ public class group extends Activity {
         tv1.setText("Group members here");
         ImageView Iv = findViewById(R.id.imageView3);
         Iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_dashboard_black_24dp));
+        Button myButton = findViewById(R.id.button4);
+        myButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                // Display a pop-up dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(group.this);
+                builder.setTitle("Button Clicked")
+                        .setMessage("You clicked the button!")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Perform any additional actions or dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
+            }
+        });
+
 
     }
 
