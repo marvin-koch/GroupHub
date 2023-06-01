@@ -3,4 +3,12 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="Mina">Mina_pic</string>
+    <string name="username">Username</string>
+    <string name="profile_page">Profile Page</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="personal_desc_text">Profile Personal Description</string>
+    <string name="edit">Edit</string>
+    <string name="contact_information_text">Contact Information</string>
+    <string name="group_list">View Joined Groups</string>
 </resources>
