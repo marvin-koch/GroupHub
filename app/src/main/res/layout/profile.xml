@@ -27,7 +27,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="478dp"
         android:contentDescription="@string/Mina"
-        android:src="@drawable/Mina"
+        android:src="@drawable/mina"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_barrier"
