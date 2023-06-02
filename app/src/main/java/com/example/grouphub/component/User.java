@@ -15,17 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-
-    enum UserType {
-        PARTICIPANT, FACILITATOR, NO_GROUP;
-    }
     private String name;
     private String phoneNumber;
     private int age;
     private Hub hub;
 
     private String userId;
-    private UserType role;
+    private String role;
 
     public User(String name, String phoneNumber, int age) {
         this.name = name;
@@ -144,11 +140,11 @@ public class User {
         hub.addUser(this);
     }
 
-    public Hub createHub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, Location location, int rating, Image photo) {
-        Hub hub = new Hub(name,category, tag,description, maxParticipants, currentParticipants, location, rating, photo, new ArrayList<>());
+    public Hub createHub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, String location, int rating) {
+        Hub hub = new Hub(name,category, tag,description, maxParticipants, currentParticipants, location, rating, new ArrayList<>());
         this.hub = hub;
         hub.addUser(this);
-        role = UserType.FACILITATOR;
+        role = "FACILITATOR";
         return hub;
     }
 
@@ -159,24 +155,24 @@ public class User {
     }
 
     public void remove_member(User participant){
-        if (role == UserType.FACILITATOR){
+        if (role == "FACILITATOR"){
             hub.removeUser(participant);
         }
     }
 
     public void accept_member(User participant){
-        if (role == UserType.FACILITATOR){
+        if (role == "FACILITATOR"){
             hub.addUser(participant);
         }
     }
 
     public void edit_group_info(String desc){
-        if (role == UserType.FACILITATOR){
+        if (role == "FACILITATOR"){
             hub.setDescription(desc);
         }
     }
 
-    public void setRole(UserType role) {
+    public void setRole(String role) {
         this.role = role;
         DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("users");
         hubsRef.child(userId).child("tag").setValue(role);
@@ -200,12 +196,12 @@ public class User {
     }
 
     public void transfer_leadership(User newLeader){
-        if (role == UserType.FACILITATOR){
-            this.setRole(UserType.PARTICIPANT);
-            newLeader.setRole(UserType.FACILITATOR);
+        if (role == "FACILITATOR"){
+            this.setRole("PARTICIPANT");
+            newLeader.setRole("FACILITATOR");
         }else {
-            this.setRole(UserType.FACILITATOR);
-            newLeader.setRole(UserType.PARTICIPANT);
+            this.setRole("FACILITATOR");
+            newLeader.setRole("PARTICIPANT");
         }
     }
 }

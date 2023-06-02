@@ -21,15 +21,14 @@ public class Hub {
     private String description;
     private int maxParticipants;
     private int currentParticipants;
-    private Location location;
+    private String location;
     private int rating;
-    private Image photo;
     private List<User> participants;
 
     private String hubId;
 
 
-    public Hub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, Location location, int rating, Image photo, List<User> participants) {
+    public Hub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, String location, int rating, List<User> participants) {
         this.name = name;
         this.category = category;
         this.tag = tag;
@@ -38,7 +37,6 @@ public class Hub {
         this.currentParticipants = currentParticipants;
         this.location = location;
         this.rating = rating;
-        this.photo = photo;
         this.participants = participants;
 
         DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
@@ -199,7 +197,7 @@ public class Hub {
         });
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(String location) {
         this.location = location;
         DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
         hubsRef.child(hubId).child("location").setValue(location);
@@ -229,30 +227,6 @@ public class Hub {
         });
     }
 
-    public void getPhoto(ObjectListener listener) {
-        DatabaseReference hubRef = FirebaseDatabase.getInstance().getReference("hubs").child(hubId).child("photo");
-
-        hubRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Image photo = dataSnapshot.getValue(Image.class);
-                listener.onObjectRead(photo);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                listener.onObjectReadError(databaseError.getMessage());
-            }
-        });
-    }
-
-    public void setPhoto(Image photo) {
-        this.photo = photo;
-        DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
-        hubsRef.child(hubId).child("photo").setValue(photo);
-
-
-    }
 
     public List<User> getParticipants() {
         List<User> participants = new ArrayList<>();
