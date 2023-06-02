@@ -1,18 +1,18 @@
 package com.example.grouphub.component;
 
-import android.location.Location;
-import android.media.Image;
+        import android.location.Location;
+        import android.media.Image;
 
-import androidx.annotation.NonNull;
+        import androidx.annotation.NonNull;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+        import com.google.firebase.database.DataSnapshot;
+        import com.google.firebase.database.DatabaseError;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
+        import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
 public class User {
 
@@ -174,6 +174,23 @@ public class User {
         this.role = role;
         DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("users");
         hubsRef.child(userId).child("tag").setValue(role);
+    }
+
+    public void getRole(ObjectListener listener){
+        DatabaseReference hubRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("role");
+
+        hubRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.getValue(String.class);
+                listener.onObjectRead(role);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                listener.onObjectReadError(databaseError.getMessage());
+            }
+        });
     }
 
     public void transfer_leadership(User newLeader){
