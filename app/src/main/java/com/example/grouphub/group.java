@@ -39,11 +39,11 @@ public class group extends Activity {
         myButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                // Display a pop-up dialog
+                // Display a pop
                 AlertDialog.Builder builder = new AlertDialog.Builder(group.this);
                 builder.setTitle("Button Clicked")
-                        .setMessage("You clicked the button!")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        .setMessage("You want to join? Well, too bad you cannot ")
+                        .setPositiveButton("Fuck off", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // Perform any additional actions or dismiss the dialog
                                 dialog.dismiss();
