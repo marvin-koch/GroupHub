@@ -1,18 +1,18 @@
 package com.example.grouphub.component;
 
-        import android.location.Location;
-        import android.media.Image;
+import android.location.Location;
+import android.media.Image;
 
-        import androidx.annotation.NonNull;
+import androidx.annotation.NonNull;
 
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-        import java.util.ArrayList;
-        import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
@@ -72,6 +72,8 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+        DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("users");
+        hubsRef.child(userId).child("name").setValue(name);
     }
 
     public void getPhoneNumber(ObjectListener listener) {
@@ -93,6 +95,8 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+        DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("users");
+        hubsRef.child(userId).child("phoneNumber").setValue(phoneNumber);
     }
 
     public void getAge(ObjectListener listener) {
@@ -114,6 +118,8 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+        DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("users");
+        hubsRef.child(userId).child("age").setValue(age);
     }
 
     public void getHub(ObjectListener listener) {
