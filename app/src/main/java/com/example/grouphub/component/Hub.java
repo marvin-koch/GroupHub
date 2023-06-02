@@ -83,6 +83,8 @@ public class Hub {
 
     public void setCategory(String category) {
         this.category = category;
+        DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
+        hubsRef.child(hubId).child("category").setValue(category);
     }
 
     public void getTag(ObjectListener listener) {
@@ -133,8 +135,22 @@ public class Hub {
         hubsRef.child(hubId).child("description").setValue(description);
     }
 
-    public int getMaxParticipants() {
-        return maxParticipants;
+    public void getMaxParticipants(ObjectListener listener) {
+        DatabaseReference hubRef = FirebaseDatabase.getInstance().getReference("hubs").child(hubId).child("maxParticipants");
+
+        hubRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String category = dataSnapshot.getValue(String.class);
+                listener.onObjectRead(maxParticipants);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                listener.onObjectReadError(databaseError.getMessage());
+            }
+        });
+
     }
 
     public void setMaxParticipants(int maxParticipants) {
