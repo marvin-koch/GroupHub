@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/editTextUsername"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:hint="@string/username"
+        android:autofillHints="Username" />
+
+    <EditText
+        android:id="@+id/editTextPassword"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:hint="@string/password"
+        android:autofillHints="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ebe5a4"
+        android:text="@string/log_in"
+        android:textColor="#000000"
+        app:cornerRadius="10dp" />
+
+    <TextView
+        android:id="@+id/textViewCreateAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/don_t_have_an_account_click_here"
+        android:textColor="#0000FF"
+        android:textSize="16sp" />
+
+</LinearLayout>

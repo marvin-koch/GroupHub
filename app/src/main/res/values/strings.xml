@@ -3,9 +3,10 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+<<<<<<< HEAD
 
     <string name="Mina">Mina_pic</string>
-    <string name="username">Username</string>
+    <string name="profile_username">Username</string>
     <string name="profile_page">Profile Page</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="personal_desc_text">Profile Personal Description</string>
@@ -16,4 +17,12 @@
     <string name="joined_groups">Your Joined Groups</string>
     <string name="return_to_profile">Return</string>
 
+=======
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="don_t_have_an_account_click_here">Don\'t have an account? Click here.</string>
+    <string name="sign_up" />
+    <string name="already_have_an_account_click_here" />
+>>>>>>> eb457e5f37c50622a9b9c2bd3b838dd186ba02f3
 </resources>
