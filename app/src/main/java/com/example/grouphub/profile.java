@@ -17,6 +17,7 @@ public class profile extends AppCompatActivity {
     Button edit_profile = findViewById(R.id.edit_profile);
     Button edit_desc = findViewById(R.id.edit);
     Button edit_contact = findViewById(R.id.edit2);
+    Button group_list = findViewById(R.id.group_list);
     edit_profile.setOnClickListener(new View.OnClickListener() {
 
     public void onClick(View v) {
@@ -50,6 +51,23 @@ public class profile extends AppCompatActivity {
             }
         });
     edit_contact.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                // Display a pop-up dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(profile.this);
+                builder.setTitle("Button Clicked")
+                        .setMessage("Don't!")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Perform any additional actions or dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
+            }
+        });
+
+    group_list.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 // Display a pop-up dialog
