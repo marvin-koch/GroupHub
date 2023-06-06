@@ -25,7 +25,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="13dp"
-                android:src="@tools:sample/avatars" />
+                android:src="@drawable/mina" />
 
             <SearchView
                 android:id="@+id/search_view"

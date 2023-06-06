@@ -68,7 +68,7 @@ public class profile extends AppCompatActivity {
             }
         });
 
-        group_list.setOnClickListener(new View.OnClickListener() {
+    group_list.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 Intent Intent = new Intent(profile.this, profile_view_groups.class);
