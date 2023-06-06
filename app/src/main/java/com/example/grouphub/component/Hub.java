@@ -2,6 +2,7 @@ package com.example.grouphub.component;
 
 import android.location.Location;
 import android.media.Image;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -14,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
 public class Hub {
     private String name;
     private String category;
@@ -21,15 +23,14 @@ public class Hub {
     private String description;
     private int maxParticipants;
     private int currentParticipants;
-    private Location location;
+    private String location;
     private int rating;
-    private Image photo;
     private List<User> participants;
 
     private String hubId;
 
 
-    public Hub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, Location location, int rating, Image photo, List<User> participants) {
+    public Hub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, String location, int rating, List<User> participants) {
         this.name = name;
         this.category = category;
         this.tag = tag;
@@ -38,15 +39,43 @@ public class Hub {
         this.currentParticipants = currentParticipants;
         this.location = location;
         this.rating = rating;
-        this.photo = photo;
         this.participants = participants;
-
         DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
         hubId = hubsRef.push().getKey();
-        hubsRef.child(hubId).setValue(this);
+        hubsRef = FirebaseUtils.getDatabase().getReference("hubs").child(hubId);
+
+        /**hubsRef.child(hubId).setValue(this);*/
+/**
+
+        hubsRef.child("name").setValue(name);
+        hubsRef.child("category").setValue(category);
+        hubsRef.child("tag").setValue(tag);
+        hubsRef.child("description").setValue(description);
+        hubsRef.child("maxParticipants").setValue(maxParticipants);
+        hubsRef.child("currentParticipants").setValue(currentParticipants);
+        hubsRef.child("location").setValue(location);
+        hubsRef.child("rating").setValue(rating);
+        hubsRef.child("participants").setValue(participants);
+        hubsRef.child("hubId").setValue(hubId);
+
     }
 
+    public void getHubId(ObjectListener listener) {
+        DatabaseReference hubRef = FirebaseDatabase.getInstance().getReference("hubs").child(hubId).child("hubId");
 
+        hubRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String hubId = dataSnapshot.getValue(String.class);
+                listener.onObjectRead(hubId);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                listener.onObjectReadError(databaseError.getMessage());
+            }
+        });
+    }
     public void getName(ObjectListener listener) {
         DatabaseReference hubRef = FirebaseDatabase.getInstance().getReference("hubs").child(hubId).child("name");
 
@@ -141,7 +170,7 @@ public class Hub {
         hubRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String category = dataSnapshot.getValue(String.class);
+                String maxParticipants = dataSnapshot.getValue(String.class);
                 listener.onObjectRead(maxParticipants);
             }
 
@@ -188,7 +217,7 @@ public class Hub {
         hubRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Location location = dataSnapshot.getValue(Location.class);
+                String location = dataSnapshot.getValue(String.class);
                 listener.onObjectRead(location);
             }
 
@@ -199,7 +228,7 @@ public class Hub {
         });
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(String location) {
         this.location = location;
         DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
         hubsRef.child(hubId).child("location").setValue(location);
@@ -229,37 +258,14 @@ public class Hub {
         });
     }
 
-    public void getPhoto(ObjectListener listener) {
-        DatabaseReference hubRef = FirebaseDatabase.getInstance().getReference("hubs").child(hubId).child("photo");
 
-        hubRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Image photo = dataSnapshot.getValue(Image.class);
-                listener.onObjectRead(photo);
-            }
+    public void getParticipants(ObjectListener listener) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                listener.onObjectReadError(databaseError.getMessage());
-            }
-        });
-    }
-
-    public void setPhoto(Image photo) {
-        this.photo = photo;
-        DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
-        hubsRef.child(hubId).child("photo").setValue(photo);
-
-
-    }
-
-    public List<User> getParticipants() {
-        List<User> participants = new ArrayList<>();
         DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs").child((hubId)).child("users");
         hubsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                ArrayList<String> participants = new ArrayList<>();
                 // Get the children of the snapshot
                 Iterable<DataSnapshot> children = snapshot.getChildren();
 
@@ -268,8 +274,9 @@ public class Hub {
                     Object childValue = childSnapshot.getValue();
 
                     // Add child value to the list
-                    participants.add((User)childValue);
+                    participants.add((String)childValue);
                 }
+                listener.onObjectRead(participants);
             }
 
             @Override
@@ -279,49 +286,29 @@ public class Hub {
             }
         });
 
-        return participants;
     }
 
 
     public void addUser(User user) {
-        if (currentParticipants - 1 == maxParticipants) {
-            System.out.println("Max capacity reached");
-        }else{
-            participants.add(user);
-            currentParticipants++;
-            setCurrentParticipants(currentParticipants);
 
-            final String[] userId = new String[1];
-            ObjectListener listener = new ObjectListener() {
-                @Override
-                public void onObjectRead(Object id) {
-                    // Store the description value in the variable
-                    userId[0] = (String) id;
-                }
-
-                @Override
-                public void onObjectReadError(Object errorMessage) {
-                    // Handle any errors while reading the description
-                    return;
-                }
-            };
-            DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
-            hubsRef.child(hubId).child("users").child(userId[0]).setValue(userId[0]);
-        }
-
-    }
-
-    public void removeUser(User user) {
-        participants.remove(user);
-        currentParticipants--;
-        setCurrentParticipants(currentParticipants);
-
-        final String[] userId = new String[1];
         ObjectListener listener = new ObjectListener() {
             @Override
             public void onObjectRead(Object id) {
                 // Store the description value in the variable
-                userId[0] = (String) id;
+                String userId = (String) id;
+
+                if (currentParticipants - 1 == maxParticipants) {
+                    System.out.println("Max capacity reached");
+                }else{
+
+                    participants.add(user);
+                    currentParticipants++;
+                    setCurrentParticipants(currentParticipants);
+
+                    Log.d("add", userId);
+                    DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
+                    hubsRef.child(hubId).child("users").child(userId).setValue(userId);
+                }
             }
 
             @Override
@@ -330,12 +317,154 @@ public class Hub {
                 return;
             }
         };
-
         user.getUserId(listener);
-        DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
-        hubsRef.child(hubId).child("users").child(userId[0]).removeValue();
+
+
+    }
+
+    public void removeUser(User user) {
+        participants.remove(user);
+        currentParticipants--;
+        setCurrentParticipants(currentParticipants);
+
+        ObjectListener listener = new ObjectListener() {
+            @Override
+            public void onObjectRead(Object id) {
+                // Store the description value in the variable
+                String userId = (String) id;
+                DatabaseReference hubsRef = FirebaseUtils.getDatabase().getReference("hubs");
+                hubsRef.child(hubId).child("users").child(userId).removeValue();
+            }
+
+            @Override
+            public void onObjectReadError(Object errorMessage) {
+                // Handle any errors while reading the description
+                return;
+            }
+        };
+        user.getUserId(listener);
+
     }
 
 
 
+}
+*/
+public class Hub {
+    private String name;
+    private String category;
+    private String tag;
+    private String description;
+    private int maxParticipants;
+    private int currentParticipants;
+    private String location;
+    private int rating;
+    private ArrayList<User> participants;
+
+    private String hubId;
+
+    public Hub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, String location, int rating, ArrayList<User> participants, String hubId) {
+        this.name = name;
+        this.category = category;
+        this.tag = tag;
+        this.description = description;
+        this.maxParticipants = maxParticipants;
+        this.currentParticipants = currentParticipants;
+        this.location = location;
+        this.rating = rating;
+        this.participants = participants;
+        this.hubId = hubId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getMaxParticipants() {
+        return maxParticipants;
+    }
+
+    public void setMaxParticipants(int maxParticipants) {
+        this.maxParticipants = maxParticipants;
+    }
+
+    public int getCurrentParticipants() {
+        return currentParticipants;
+    }
+
+    public void setCurrentParticipants(int currentParticipants) {
+        this.currentParticipants = currentParticipants;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public String getHubId() {
+        return hubId;
+    }
+
+    public ArrayList<User> getParticipants() {
+        ArrayList<User> participantNames = new ArrayList<>();
+        for (User participant : participants) {
+            participantNames.add(participant);
+        }
+        return participantNames;
+    }
+
+    public void addUser(User user) {
+        if (currentParticipants - 1 == maxParticipants) {
+            System.out.println("Max capacity reached");
+        } else {
+            participants.add(user);
+            currentParticipants++;
+            setCurrentParticipants(currentParticipants);
+        }
+    }
+
+    public void removeUser(User user) {
+        participants.remove(user);
+        currentParticipants--;
+        setCurrentParticipants(currentParticipants);
+    }
 }
