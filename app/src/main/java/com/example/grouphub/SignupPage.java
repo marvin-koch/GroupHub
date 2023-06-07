@@ -1,4 +1,5 @@
 package com.example.grouphub;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,22 +7,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class LoginPage extends Activity {
-
+public class SignupPage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.aribah);
+        setContentView(R.layout.signup);
 
-        Button buttonLogin = findViewById(R.id.buttonLogin);
+        Button buttonSignup = findViewById(R.id.buttonSignup);
 
-        buttonLogin.setOnClickListener(v -> {
+        buttonSignup.setOnClickListener(v -> {
             EditText editTextUsername = findViewById(R.id.editTextUsername);
             String usernameInput = editTextUsername.getText().toString();
             if (usernameInput.matches(".*[\\\\/:*?|<>\"].*")) {
                 // The username contains invalid characters
                 editTextUsername.setError("Username cannot contain \\ / : * ? | < > \"");
             } else {
-                // The username is valid
+                // the username should be checked with existing
+                // usernames so that it is unique
+
+
+                // then it is valid
                 // send username to DB
             }
 
@@ -41,15 +45,17 @@ public class LoginPage extends Activity {
                 // The password is valid
                 // send password to DB
             }
+
+            EditText editTextPhone = findViewById(R.id.editTextPhone);
+            String phoneInput = editTextPhone.getText().toString();
+            // add phone number to DB
+
         });
 
-        View textViewCreateAccount = findViewById(R.id.textViewCreateAccount);
-        textViewCreateAccount.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginPage.this, SignupPage.class);
+        View textViewLogin = findViewById(R.id.textViewLogin);
+        textViewLogin.setOnClickListener(v -> {
+            Intent intent = new Intent(SignupPage.this, LoginPage.class);
             startActivity(intent);
         });
     }
-
 }
-
-
