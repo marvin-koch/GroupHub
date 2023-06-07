@@ -19,17 +19,7 @@ public class profile_view_groups extends AppCompatActivity {
     return_to_profile.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                //finish();
-                AlertDialog.Builder builder = new AlertDialog.Builder(profile_view_groups.this);
-                builder.setTitle("Button Clicked")
-                        .setMessage("Don't!")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Perform any additional actions or dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
+                finish();
             }
         });
     }
