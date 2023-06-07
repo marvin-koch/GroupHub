@@ -59,7 +59,7 @@
         android:layout_width="100dp"
         android:layout_height="60dp"
         android:background="@drawable/rounded_buttons"
-        android:text="@string/return_to_profile"
+        android:text="@string/back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

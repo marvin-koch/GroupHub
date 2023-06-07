@@ -13,7 +13,7 @@
     <string name="group_list">View Joined Groups</string>
 
     <string name="joined_groups">Your Joined Groups</string>
-    <string name="return_to_profile">Return</string>
+    <string name="back">Return</string>
 
 
     <string name="username">Username</string>

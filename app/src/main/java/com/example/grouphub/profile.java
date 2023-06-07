@@ -19,6 +19,7 @@ public class profile extends AppCompatActivity {
     Button edit_desc = findViewById(R.id.edit);
     Button edit_contact = findViewById(R.id.edit2);
     Button group_list = findViewById(R.id.group_list);
+    Button return_to_main = findViewById(R.id.return_to_main);
     edit_profile.setOnClickListener(new View.OnClickListener() {
 
     public void onClick(View v) {
@@ -70,10 +71,15 @@ public class profile extends AppCompatActivity {
 
     group_list.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v) {
-                Intent Intent = new Intent(profile.this, profile_view_groups.class);
-                startActivity(Intent);
-            }
-        });
-
-    }}
+        public void onClick(View v) {
+            Intent Intent = new Intent(profile.this, profile_view_groups.class);
+            startActivity(Intent);
+        }
+    });
+    return_to_main.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            finish();
+        }
+    });
+    }
+}

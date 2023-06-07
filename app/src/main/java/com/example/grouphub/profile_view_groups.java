@@ -2,6 +2,8 @@ package com.example.grouphub;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +19,17 @@ public class profile_view_groups extends AppCompatActivity {
     return_to_profile.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                finish();
+                //finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(profile_view_groups.this);
+                builder.setTitle("Button Clicked")
+                        .setMessage("Don't!")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Perform any additional actions or dismiss the dialog
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
             }
         });
     }
