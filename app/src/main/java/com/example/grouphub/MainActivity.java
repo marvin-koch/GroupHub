@@ -19,6 +19,16 @@ import com.example.grouphub.databinding.ActivityMainBinding;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -42,5 +52,15 @@ public class MainActivity extends AppCompatActivity {
         //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         //NavigationUI.setupWithNavController(binding.navView, navController);
+        CircleImageView profileImage = findViewById(R.id.profile_image);
+        profileImage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent Intent = new Intent(MainActivity.this, profile.class);
+                startActivity(Intent);
+
+            }
+        });
     }
 }
