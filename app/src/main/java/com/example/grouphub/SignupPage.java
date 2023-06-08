@@ -1,11 +1,16 @@
 package com.example.grouphub;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.grouphub.component.SignUpHandler;
 
 public class SignupPage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +49,30 @@ public class SignupPage extends Activity {
             } else {
                 // The password is valid
                 // send password to DB
-            }
 
             EditText editTextPhone = findViewById(R.id.editTextPhone);
             String phoneInput = editTextPhone.getText().toString();
             // add phone number to DB
+
+            SignUpHandler.signUpUser(this, usernameInput, passwordInput, phoneInput, new SignUpHandler.OnSignUpCompleteListener() {
+                @Override
+                public void onSignUpSuccess() {
+                    // User registration success
+
+                    Intent intent = new Intent(SignupPage.this, LoginPage.class);
+                    startActivity(intent);
+                    Log.d("suc", "onSignUpSuccess: ");
+
+                    // Additional user data is already stored in the database
+                }
+
+                @Override
+                public void onSignUpFailure(String errorMessage) {
+                    // User registration failed
+                }
+            });
+            }
+
 
         });
 

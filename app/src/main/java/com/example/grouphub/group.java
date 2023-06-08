@@ -46,32 +46,8 @@ public class group extends Activity {
         ImageView Iv = findViewById(R.id.imageView3);
         Iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_dashboard_black_24dp));
         Button myButton = findViewById(R.id.button4);
-        User test = new User("mister", "092134902", 21, "788939");
-        Hub hub = new Hub("huber", "cat", "dog", "it's a hub", 11, 0, "loc", 3, new ArrayList<>(), "1");
-        test.joinHub(hub);
-        ArrayList part = hub.getParticipants();
-        for (Object p:part) {
-            Log.d("user", ((User)p).getUserId());
-        }
 
-        FirebaseUtils.addUser(test);
-        FirebaseUtils.addHub(hub);
 
-        ObjectListener listener = new ObjectListener() {
-            @Override
-            public void onObjectRead(Object id) {
-                // Store the description value in the variable
-                User s = (User) id;
-                Log.d("here", s.getUserId());
-
-            }
-
-            @  Override
-            public void onObjectReadError(Object errorMessage) {
-                // Handle any errors while reading the description
-                return;
-            }
-        };
 
 
 
@@ -82,28 +58,7 @@ public class group extends Activity {
 
 
             public void onClick(View v) {
-                /**
-                ObjectListener listener = new ObjectListener() {
-                    @Override
-                    public void onObjectRead(Object id) {
-                        // Store the description value in the variable
-                        ArrayList part = (ArrayList) id;
-                        Log.d("here", "here");
-                        for (Object p:part) {
-                            Log.d("user", (String) p);
-                        }
-                    }
 
-                    @  Override
-                    public void onObjectReadError(Object errorMessage) {
-                        // Handle any errors while reading the description
-                        return;
-                    }
-                };
-                hub.getParticipants(listener);
-                 */
-
-                FirebaseUtils.getUser(listener, test.getUserId());
                 // Display a pop
                 AlertDialog.Builder builder = new AlertDialog.Builder(group.this);
                 builder.setTitle("Button Clicked")
