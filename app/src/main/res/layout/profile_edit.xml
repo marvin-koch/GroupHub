@@ -80,17 +80,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back" />
 
-    <Button
-        android:id="@+id/save_changes"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@drawable/rounded_buttons"
-        android:text="@string/save"
-        app:layout_constraintBottom_toBottomOf="@+id/top_barrier"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/profile_outline"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_picture"
         android:layout_width="150dp"
