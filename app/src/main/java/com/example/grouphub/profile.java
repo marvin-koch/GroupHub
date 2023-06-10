@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class profile extends AppCompatActivity {
 
@@ -41,15 +42,25 @@ public class profile extends AppCompatActivity {
             public void onClick(View v) {
                 // Display a pop-up dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(profile.this);
-                builder.setTitle("Button Clicked")
-                        .setMessage("Don't!")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Perform any additional actions or dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
+                final View desc_popup = getLayoutInflater().inflate(R.layout.profile_edit_desc, null);
+                builder.setView(desc_popup);
+                builder.setTitle("Edit description");
+                builder.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // set change to db if apply is clicked
+                        dialog.dismiss();
+                        Toast.makeText(profile.this, "Changes applied", Toast.LENGTH_SHORT).show();
+                        // "change applied" message will pop up
+                        // should probably refresh profile page to apply changes
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // abort pop up if cancel is clicked
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
             }
         });
     edit_contact.setOnClickListener(new View.OnClickListener() {
@@ -57,15 +68,25 @@ public class profile extends AppCompatActivity {
             public void onClick(View v) {
                 // Display a pop-up dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(profile.this);
-                builder.setTitle("Button Clicked")
-                        .setMessage("Don't!")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Perform any additional actions or dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
+                final View desc_popup = getLayoutInflater().inflate(R.layout.profile_edit_contact, null);
+                builder.setView(desc_popup);
+                builder.setTitle("Edit contact information");
+                builder.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // set change to db if apply is clicked
+                        dialog.dismiss();
+                        Toast.makeText(profile.this, "Changes applied", Toast.LENGTH_SHORT).show();
+                        // "change applied" message will pop up
+                        // should probably refresh profile page to apply changes
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // abort pop up if cancel is clicked
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
             }
         });
 
