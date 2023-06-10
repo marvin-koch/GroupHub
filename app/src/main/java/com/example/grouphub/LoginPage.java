@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.grouphub.component.LoginHandler;
+
 public class LoginPage extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,23 @@ public class LoginPage extends Activity {
             } else {
                 // The password is valid
                 // send password to DB
+
+                LoginHandler.loginUser(this, usernameInput, passwordInput, new LoginHandler.OnLoginCompleteListener() {
+                    @Override
+                    public void onLoginSuccess() {
+                        // User registration success
+
+                        Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                        startActivity(intent);
+
+                        // Additional user data is already stored in the database
+                    }
+
+                    @Override
+                    public void onLoginFailure(String errorMessage) {
+                        // User registration failed
+                    }
+                });
             }
         });
 

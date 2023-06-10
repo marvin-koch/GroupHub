@@ -27,7 +27,7 @@ public class FirebaseUtils {
     }
 
     public static void getUser(ObjectListener listener, String userId){
-        getDatabase().getReference("users").addListenerForSingleValueEvent(new ValueEventListener() {
+        getDatabase().getReference("users").child(userId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
@@ -41,7 +41,7 @@ public class FirebaseUtils {
         });
     }
     public static void getHub(ObjectListener listener, String hubId){
-        getDatabase().getReference("users").addListenerForSingleValueEvent(new ValueEventListener() {
+        getDatabase().getReference("hubs").child(hubId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Hub hub = dataSnapshot.getValue(Hub.class);

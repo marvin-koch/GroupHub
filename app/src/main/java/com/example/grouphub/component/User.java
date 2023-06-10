@@ -285,15 +285,26 @@ public class User {
 public class User {
     private String name;
     private String phoneNumber;
-    private int age;
     private Hub hub;
     private String userId;
+    private String email;
+    private String description;
+
     private String role;
 
-    public User(String name, String phoneNumber, int age, String userId) {
+    public User(){
+        name = "";
+        email = "";
+        phoneNumber = "";
+        userId = "";
+        description = "";
+
+    }
+    public User(String email, String name, String phoneNumber, String description, String userId) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-        this.age = age;
+        this.email = email;
+        this.description = description;
         this.userId = userId;
     }
 
@@ -313,14 +324,6 @@ public class User {
         return phoneNumber;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
     public void setHub(Hub hub) {
         this.hub = hub;
     }
@@ -337,9 +340,13 @@ public class User {
         role = "FACILITATOR";
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public String getDescription() {
+        return description;
     }
+
+    public void setRole(String role) {
+    this.role = role;
+}
 
     public String getRole() {
         return role;
