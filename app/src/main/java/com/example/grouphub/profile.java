@@ -9,10 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
 
+import com.example.grouphub.component.FirebaseUtils;
 import com.example.grouphub.component.Hub;
 import com.example.grouphub.component.LoginHandler;
 import com.example.grouphub.component.User;
@@ -47,6 +49,7 @@ public class profile extends AppCompatActivity {
 
         public void onClick(View v) {
             Intent Intent = new Intent(profile.this, profile_edit.class);
+            Intent.putExtra("user", user);
             startActivity(Intent);
         }
     });
@@ -58,9 +61,13 @@ public class profile extends AppCompatActivity {
                 final View desc_popup = getLayoutInflater().inflate(R.layout.profile_edit_desc, null);
                 builder.setView(desc_popup);
                 builder.setTitle("Edit description");
+                final EditText newdesc = desc_popup.findViewById(R.id.edit_desc_popup);
                 builder.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // set change to db if apply is clicked
+                        String desc = newdesc.getText().toString();
+                        user.setDescription(desc);
+                        description.setText(user.getDescription());
                         dialog.dismiss();
                         Toast.makeText(profile.this, "Changes applied", Toast.LENGTH_SHORT).show();
                         // "change applied" message will pop up
@@ -84,9 +91,13 @@ public class profile extends AppCompatActivity {
                 final View desc_popup = getLayoutInflater().inflate(R.layout.profile_edit_contact, null);
                 builder.setView(desc_popup);
                 builder.setTitle("Edit contact information");
+                final EditText newdesc = desc_popup.findViewById(R.id.edit_contact_popup);
                 builder.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // set change to db if apply is clicked
+                        String number = newdesc.getText().toString();
+                        user.setPhoneNumber(number);
+                        info.setText(user.getPhoneNumber());
                         dialog.dismiss();
                         Toast.makeText(profile.this, "Changes applied", Toast.LENGTH_SHORT).show();
                         // "change applied" message will pop up
@@ -129,6 +140,7 @@ public class profile extends AppCompatActivity {
             //finish();
             Intent Intent = new Intent(profile.this, MainActivity.class);
             Intent.putExtra("currentuser", user);
+            FirebaseUtils.addUser(user);
             startActivity(Intent);
         }
     });

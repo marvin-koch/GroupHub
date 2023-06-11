@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.grouphub.component.User;
 
 public class profile_edit extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class profile_edit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_edit);
+        User user = (User) getIntent().getSerializableExtra("user");
 
         ImageButton return_to_profile = findViewById(R.id.return_to_main);
         TextView change_photo = findViewById(R.id.change_picture);
@@ -27,7 +31,10 @@ public class profile_edit extends AppCompatActivity {
 
         return_to_profile.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                finish();
+                Intent Intent = new Intent(profile_edit.this, profile.class);
+                Intent.putExtra("user", user);
+                startActivity(Intent);
+                //finish();
             }
         });
 
@@ -64,9 +71,13 @@ public class profile_edit extends AppCompatActivity {
                 final View desc_popup = getLayoutInflater().inflate(R.layout.profile_edit_username, null);
                 builder.setView(desc_popup);
                 builder.setTitle("Change Username");
+                final EditText newname = desc_popup.findViewById(R.id.edit_desc_popup);
+
                 builder.setPositiveButton("Apply", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // set change to db if apply is clicked
+                        String username = newname.getText().toString();
+                        user.setName(username);
                         dialog.dismiss();
                         Toast.makeText(profile_edit.this, "Changes applied", Toast.LENGTH_SHORT).show();
                         // "change applied" message will pop up
