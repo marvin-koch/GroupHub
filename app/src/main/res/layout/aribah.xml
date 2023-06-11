@@ -13,7 +13,7 @@
         android:layout_width="210dp"
         android:layout_height="50dp"
         android:hint="@string/username"
-        android:autofillHints="Username" />
+        android:autofillHints="Email" />
 
     <EditText
         android:id="@+id/editgroupdesc"

@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GroupHub"
+        android:usesCleartextTraffic="true"
+
         tools:targetApi="31">
         <activity
             android:name=".placeholder"
@@ -48,9 +50,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage" android:exported="false" />
-        <activity android:name=".SignupPage" android:exported="false" />
+        <activity android:name=".LoginPage" android:exported="true" />
+        <activity android:name=".SignupPage" android:exported="true" />
         <activity android:name=".profile_view_groups" android:exported="false" />
+        <activity android:name=".profile_edit" android:exported="false" />
+        <activity android:name=".profile_change_password" android:exported="false" />
     </application>
 
 </manifest>

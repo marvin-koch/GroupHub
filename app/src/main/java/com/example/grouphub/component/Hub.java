@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -350,7 +351,7 @@ public class Hub {
 
 }
 */
-public class Hub {
+public class Hub implements Serializable {
     private String name;
     private String category;
     private String tag;
@@ -362,6 +363,20 @@ public class Hub {
     private ArrayList<User> participants;
 
     private String hubId;
+
+    public Hub(){
+        name = "";
+        category = "";
+        tag = "";
+        description = "";
+        maxParticipants = 0;
+        currentParticipants = 0;
+        location = "";
+        rating = 0;
+        participants = new ArrayList<>();
+        hubId = "";
+
+    }
 
     public Hub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, String location, int rating, ArrayList<User> participants, String hubId) {
         this.name = name;
