@@ -1,8 +1,6 @@
 package com.example.grouphub;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,7 +48,7 @@ public class SignupPage extends Activity {
                 // The password is valid
                 // send password to DB
 
-            EditText editTextPhone = findViewById(R.id.editkeyword);
+            EditText editTextPhone = findViewById(R.id.location);
             String phoneInput = editTextPhone.getText().toString();
             // add phone number to DB
 

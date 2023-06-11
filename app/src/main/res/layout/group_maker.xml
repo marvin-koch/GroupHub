@@ -9,10 +9,26 @@
 
     <EditText
         android:id="@+id/editname"
+        android:layout_width="303dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="Group name"
+        android:hint="@string/groupname"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/category"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="Group name"
+        android:hint="category"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/tag"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:autofillHints="Group name"
-        android:hint="@string/groupname"
+        android:hint="tag"
         android:inputType="text" />
 
     <EditText
@@ -24,12 +40,12 @@
         android:inputType="textLongMessage" />
 
     <EditText
-        android:id="@+id/editkeyword"
+        android:id="@+id/location"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:autofillHints="Phone Number"
         android:ems="10"
-        android:hint="Phone Number"
+        android:hint="Location"
         android:inputType="phone" />
 
     <Button

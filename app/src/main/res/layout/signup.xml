@@ -24,7 +24,7 @@
         android:inputType="textPassword" />
 
     <EditText
-        android:id="@+id/editkeyword"
+        android:id="@+id/location"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:autofillHints="Phone Number"

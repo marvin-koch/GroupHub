@@ -3,12 +3,9 @@ package com.example.grouphub;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.example.grouphub.component.SignUpHandler;
 
 public class group_maker extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +45,7 @@ public class group_maker extends Activity {
             // The password is valid
             // send password to DB
 
-            EditText editTextPhone = findViewById(R.id.editkeyword);
+            EditText editTextPhone = findViewById(R.id.location);
             String phoneInput = editTextPhone.getText().toString();
             // add phone number to DB
             // push group into database
