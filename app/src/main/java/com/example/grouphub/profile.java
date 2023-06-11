@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.grouphub.component.Hub;
 import com.example.grouphub.component.LoginHandler;
+import com.example.grouphub.component.User;
 
 public class profile extends AppCompatActivity {
     // globally
@@ -27,6 +28,8 @@ public class profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
+        User user = (User) getIntent().getSerializableExtra("currentuser");
+
         TextView profile_username = (TextView)findViewById(R.id.profile_username);
         TextView description = (TextView)findViewById(R.id.personal_desc_text);
         TextView info = (TextView)findViewById(R.id.contact_information_text);
@@ -37,9 +40,9 @@ public class profile extends AppCompatActivity {
         ImageButton return_to_main = findViewById(R.id.return_to_main);
 
 
-        profile_username.setText(LoginHandler.currentUser.getName());
-        description.setText(LoginHandler.currentUser.getDescription());
-        info.setText(LoginHandler.currentUser.getPhoneNumber());
+        profile_username.setText(user.getName());
+        description.setText(user.getDescription());
+        info.setText(user.getPhoneNumber());
     edit_profile.setOnClickListener(new View.OnClickListener() {
 
         public void onClick(View v) {
