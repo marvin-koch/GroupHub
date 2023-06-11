@@ -71,7 +71,7 @@
             android:layout_weight="1"
             android:background="@drawable/gray_button"
             android:gravity="center"
-            android:text="GROUP NAME"
+            android:text="Group Name"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
             android:layout_weight="1"
             android:background="@drawable/gray_button"
             android:gravity="center"
-            android:text="CATEGORY"
+            android:text="Category"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
             android:layout_weight="1"
             android:background="@drawable/gray_button"
             android:gravity="center"
-            android:text="DESCRIPTION"
+            android:text="Description"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -128,7 +128,7 @@
             android:layout_weight="1"
             android:background="@drawable/gray_button"
             android:gravity="center"
-            android:text="Group Name"
+            android:text="GroupName1"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -140,7 +140,7 @@
             android:layout_weight="1"
             android:background="@drawable/gray_button"
             android:gravity="center"
-            android:text="Category"
+            android:text="Category1"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -152,7 +152,7 @@
             android:layout_weight="1"
             android:background="@drawable/gray_button"
             android:gravity="center"
-            android:text="Description"
+            android:text="Description1"
             android:textSize="18sp"
             android:textStyle="bold" />
 
