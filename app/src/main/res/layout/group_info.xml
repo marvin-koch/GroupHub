@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.52"
-        tools:srcCompat="@drawable/group" />
+        tools:srcCompat="@drawable/paint" />
 
     <TextView
         android:id="@+id/text_name"
@@ -101,6 +101,6 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/sym_action_chat" />
+        app:srcCompat="@android:drawable/arrow_up_float" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
