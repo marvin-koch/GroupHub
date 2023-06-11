@@ -11,12 +11,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.grouphub.component.User;
+
 public class profile_change_password extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_change_password);
+        User user = (User) getIntent().getSerializableExtra("user");
 
         ImageButton return_to_profile = findViewById(R.id.return_to_main);
         Button change_password = findViewById(R.id.update_password);

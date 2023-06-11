@@ -276,6 +276,7 @@
         android:layout_below="@+id/group_layout_3" />
 
     <!-- Load More Button -->
+    <!--
     <Button
         android:id="@+id/load_more_button"
         android:layout_width="wrap_content"
@@ -284,7 +285,7 @@
         android:layout_below="@+id/group_layout_3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
-
+    -->
     <!-- Create New Group Button -->
     <ImageButton
         android:id="@+id/create_group_button"

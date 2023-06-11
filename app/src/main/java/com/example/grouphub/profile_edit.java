@@ -98,6 +98,7 @@ public class profile_edit extends AppCompatActivity {
         change_password.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent Intent = new Intent(profile_edit.this, profile_change_password.class);
+                Intent.putExtra("user", user);
                 startActivity(Intent);
             }
         });
