@@ -55,6 +55,7 @@
         <activity android:name=".profile_view_groups" android:exported="false" />
         <activity android:name=".profile_edit" android:exported="false" />
         <activity android:name=".profile_change_password" android:exported="false" />
+        <activity android:name=".joined_groups" android:exported="false" />
     </application>
 
 </manifest>

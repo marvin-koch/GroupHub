@@ -54,6 +54,110 @@
         </FrameLayout>
     </FrameLayout>
 
+    <LinearLayout
+        android:id="@+id/group_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_barrier"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/top_barrier">
+
+        <TextView
+            android:id="@+id/group_name"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/gray_button"
+            android:gravity="center"
+            android:text="GROUP NAME"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/gray_button"
+            android:gravity="center"
+            android:text="CATEGORY"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/gray_button"
+            android:gravity="center"
+            android:text="DESCRIPTION"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/group_x_bottom_border"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/group_layout"
+        android:layout_marginTop="6dp"
+        android:background="#000000"
+        app:layout_constraintTop_toBottomOf="@+id/group_layout" />
+
+    <LinearLayout
+        android:id="@+id/group_layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_barrier"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/group_layout">
+
+        <TextView
+            android:id="@+id/group_name1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/gray_button"
+            android:gravity="center"
+            android:text="Group Name"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/category1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/gray_button"
+            android:gravity="center"
+            android:text="Category"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/description1"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/gray_button"
+            android:gravity="center"
+            android:text="Description"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/back_to_profile"
         android:layout_width="100dp"

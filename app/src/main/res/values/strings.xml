@@ -25,6 +25,12 @@
     <string name="new_password">New Password</string>
     <string name="confirm_password">Confirm Password</string>
 
+    <string name="group_description">Group Description</string>
+    <string name="group_members_list">Group Members List</string>
+    <string name="view">View</string>
+    <string name="group_page">Group Page</string>
+
+
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="log_in">Log in</string>
