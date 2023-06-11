@@ -48,7 +48,8 @@ public class group extends Activity {
         TextView tv1 = findViewById(R.id.text_desc);
         tv1.setText(currentHub.getDescription());
         TextView tv2 = findViewById(R.id.text_member);
-        tv2.setText(Integer.toString(currentHub.getCurrentParticipants()));
+        String participants = String.join(",", currentHub.getParticipants());
+        tv2.setText(participants);
         ImageView Iv = findViewById(R.id.imageView3);
         Iv.setImageDrawable(getResources().getDrawable(R.drawable.ic_dashboard_black_24dp));
         Button myButton = findViewById(R.id.button4);
@@ -94,6 +95,7 @@ public class group extends Activity {
 
             public void onClick(View v) {
                 Intent Intent = new Intent(group.this, MainActivity.class);
+                Intent.putExtra("currentuser", currentuser);
                 startActivity(Intent);
             }
         });

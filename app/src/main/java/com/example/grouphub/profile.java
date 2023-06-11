@@ -28,7 +28,7 @@ public class profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
 
-        User user = (User) getIntent().getSerializableExtra("currentuser");
+        User user = (User) getIntent().getSerializableExtra("user");
 
         TextView profile_username = (TextView)findViewById(R.id.profile_username);
         TextView description = (TextView)findViewById(R.id.personal_desc_text);
@@ -126,7 +126,10 @@ public class profile extends AppCompatActivity {
     });
     return_to_main.setOnClickListener(new View.OnClickListener() {
         public void onClick(View v) {
-            finish();
+            //finish();
+            Intent Intent = new Intent(profile.this, MainActivity.class);
+            Intent.putExtra("currentuser", user);
+            startActivity(Intent);
         }
     });
     }
