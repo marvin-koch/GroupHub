@@ -8,7 +8,7 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/editkeywords"
+        android:id="@+id/editname"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:autofillHints="Group name"
