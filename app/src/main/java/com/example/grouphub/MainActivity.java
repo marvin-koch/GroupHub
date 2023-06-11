@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         User current = (User) getIntent().getSerializableExtra("currentuser");
                         Intent Intent = new Intent(MainActivity.this, profile.class);
-                        getIntent().putExtra("user", current);
+                        Intent.putExtra("user", current);
                         startActivity(Intent);
 
                     }

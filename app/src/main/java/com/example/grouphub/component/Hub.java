@@ -360,7 +360,7 @@ public class Hub implements Serializable {
     private int currentParticipants;
     private String location;
     private int rating;
-    private ArrayList<User> participants;
+    private ArrayList<String> participants;
 
     private String hubId;
 
@@ -378,7 +378,7 @@ public class Hub implements Serializable {
 
     }
 
-    public Hub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, String location, int rating, ArrayList<User> participants, String hubId) {
+    public Hub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, String location, int rating, ArrayList<String> participants, String hubId) {
         this.name = name;
         this.category = category;
         this.tag = tag;
@@ -459,9 +459,9 @@ public class Hub implements Serializable {
         return hubId;
     }
 
-    public ArrayList<User> getParticipants() {
-        ArrayList<User> participantNames = new ArrayList<>();
-        for (User participant : participants) {
+    public ArrayList<String> getParticipants() {
+        ArrayList<String> participantNames = new ArrayList<>();
+        for (String participant : participants) {
             participantNames.add(participant);
         }
         return participantNames;
@@ -471,14 +471,14 @@ public class Hub implements Serializable {
         if (currentParticipants - 1 == maxParticipants) {
             System.out.println("Max capacity reached");
         } else {
-            participants.add(user);
+            participants.add(user.getName());
             currentParticipants++;
             setCurrentParticipants(currentParticipants);
         }
     }
 
     public void removeUser(User user) {
-        participants.remove(user);
+        participants.remove(user.getName());
         currentParticipants--;
         setCurrentParticipants(currentParticipants);
     }
