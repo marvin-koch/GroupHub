@@ -76,8 +76,8 @@ public class group extends Activity {
 
                 // Display a pop
                 AlertDialog.Builder builder = new AlertDialog.Builder(group.this);
-                builder.setTitle("Button Clicked")
-                        .setMessage("You have successfully joined!")
+                builder.setTitle("Success")
+                        .setMessage("You have successfully joined the hub!")
                         .setPositiveButton("Close", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 // Perform any additional actions or dismiss the dialog

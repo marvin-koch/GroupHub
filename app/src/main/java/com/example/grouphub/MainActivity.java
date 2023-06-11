@@ -38,6 +38,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -91,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
                 //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
                 //NavigationUI.setupWithNavController(binding.navView, navController);
 
-                name1.setOnClickListener(new View.OnClickListener(){
+                name1.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v){
+                    public void onClick(View v) {
                         User current = (User) getIntent().getSerializableExtra("currentuser");
                         Log.d("main", current.getName());
                         Intent intent = new Intent(MainActivity.this, group.class);
@@ -104,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 });
-                name2.setOnClickListener(new View.OnClickListener(){
+                name2.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v){
+                    public void onClick(View v) {
                         User current = (User) getIntent().getSerializableExtra("currentuser");
                         Intent intent = new Intent(MainActivity.this, group.class);
                         intent.putExtra("hub", secondhub);
@@ -116,9 +117,9 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 });
-                 name3.setOnClickListener(new View.OnClickListener(){
+                name3.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v){
+                    public void onClick(View v) {
                         User current = (User) getIntent().getSerializableExtra("currentuser");
                         Intent intent = new Intent(MainActivity.this, group.class);
                         intent.putExtra("hub", thirdhub);
@@ -143,7 +144,121 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                ImageView music = findViewById(R.id.music);
+                music.setOnClickListener(new View.OnClickListener() {
 
+                    @Override
+                    public void onClick(View v) {
+                        ArrayList<Hub> musichubs = new ArrayList<>();
+                        for (Hub hub : hubs) {
+                            if (hub.getCategory() == "music") {
+                                musichubs.add(hub);
+                            }
+                        }
+                        Hub firsthub = musichubs.get(0);
+                        Hub secondhub = musichubs.get(1);
+                        Hub thirdhub = musichubs.get(2);
+
+                        name1.setText(firsthub.getName());
+                        name2.setText(secondhub.getName());
+                        name3.setText(thirdhub.getName());
+                        rating1.setText(Integer.toString(firsthub.getRating()));
+                        rating2.setText(Integer.toString(secondhub.getRating()));
+                        rating3.setText(Integer.toString(thirdhub.getRating()));
+                        tag1.setText(firsthub.getTag());
+                        tag2.setText(secondhub.getTag());
+                        tag3.setText(thirdhub.getTag());
+
+
+                    }
+                });
+                ImageView art = findViewById(R.id.art);
+                art.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        ArrayList<Hub> musichubs = new ArrayList<>();
+                        for (Hub hub : hubs) {
+                            if (hub.getCategory() == "art") {
+                                musichubs.add(hub);
+                            }
+                        }
+                        Hub firsthub = musichubs.get(0);
+                        Hub secondhub = musichubs.get(1);
+                        Hub thirdhub = musichubs.get(2);
+
+                        name1.setText(firsthub.getName());
+                        name2.setText(secondhub.getName());
+                        name3.setText(thirdhub.getName());
+                        rating1.setText(Integer.toString(firsthub.getRating()));
+                        rating2.setText(Integer.toString(secondhub.getRating()));
+                        rating3.setText(Integer.toString(thirdhub.getRating()));
+                        tag1.setText(firsthub.getTag());
+                        tag2.setText(secondhub.getTag());
+                        tag3.setText(thirdhub.getTag());
+
+
+                    }
+                });
+
+
+                ImageView sports = findViewById(R.id.sports);
+                sports.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        ArrayList<Hub> musichubs = new ArrayList<>();
+                        for (Hub hub : hubs) {
+                            if (hub.getCategory() == "sport") {
+                                musichubs.add(hub);
+                            }
+                        }
+                        Hub firsthub = musichubs.get(0);
+                        Hub secondhub = musichubs.get(1);
+                        Hub thirdhub = musichubs.get(2);
+
+                        name1.setText(firsthub.getName());
+                        name2.setText(secondhub.getName());
+                        name3.setText(thirdhub.getName());
+                        rating1.setText(Integer.toString(firsthub.getRating()));
+                        rating2.setText(Integer.toString(secondhub.getRating()));
+                        rating3.setText(Integer.toString(thirdhub.getRating()));
+                        tag1.setText(firsthub.getTag());
+                        tag2.setText(secondhub.getTag());
+                        tag3.setText(thirdhub.getTag());
+
+
+                    }
+                });
+
+                ImageView coding = findViewById(R.id.coding);
+                coding.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        ArrayList<Hub> musichubs = new ArrayList<>();
+                        for (Hub hub : hubs) {
+                            if (hub.getCategory() == "coding") {
+                                musichubs.add(hub);
+                            }
+                        }
+                        Hub firsthub = musichubs.get(0);
+                        Hub secondhub = musichubs.get(1);
+                        Hub thirdhub = musichubs.get(2);
+
+                        name1.setText(firsthub.getName());
+                        name2.setText(secondhub.getName());
+                        name3.setText(thirdhub.getName());
+                        rating1.setText(Integer.toString(firsthub.getRating()));
+                        rating2.setText(Integer.toString(secondhub.getRating()));
+                        rating3.setText(Integer.toString(thirdhub.getRating()));
+                        tag1.setText(firsthub.getTag());
+                        tag2.setText(secondhub.getTag());
+                        tag3.setText(thirdhub.getTag());
+
+
+                    }
+                });
             }
 
             @  Override
