@@ -57,6 +57,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:id="@+id/music"
                 android:src="@drawable/music"
                 android:layout_gravity="center"/>
         </FrameLayout>
@@ -70,6 +71,7 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:id="@+id/art"
                 android:src="@drawable/paint"
                 android:layout_gravity="center"/>
         </FrameLayout>
@@ -83,6 +85,7 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:id="@+id/sports"
                 android:src="@drawable/basketball"
                 android:layout_gravity="center"/>
         </FrameLayout>
@@ -96,6 +99,7 @@
             <ImageView
                 android:layout_width="45dp"
                 android:layout_height="45dp"
+                android:id="@+id/coding"
                 android:src="@drawable/programming"
                 android:layout_gravity="center"/>
         </FrameLayout>
