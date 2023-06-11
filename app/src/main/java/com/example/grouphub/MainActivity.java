@@ -107,8 +107,10 @@ public class MainActivity extends AppCompatActivity {
                 name2.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
                         Intent intent = new Intent(MainActivity.this, group.class);
                         intent.putExtra("hub", secondhub);
+                        intent.putExtra("currentuser", current);
                         startActivity(intent);
 
                     }
@@ -117,8 +119,10 @@ public class MainActivity extends AppCompatActivity {
                  name3.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
                         Intent intent = new Intent(MainActivity.this, group.class);
                         intent.putExtra("hub", thirdhub);
+                        intent.putExtra("currentuser", current);
                         startActivity(intent);
 
                     }
@@ -131,7 +135,9 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
                         Intent Intent = new Intent(MainActivity.this, profile.class);
+                        getIntent().putExtra("user", current);
                         startActivity(Intent);
 
                     }
