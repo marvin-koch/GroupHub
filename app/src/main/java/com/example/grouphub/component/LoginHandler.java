@@ -10,6 +10,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
+
 public class LoginHandler {
     public static User currentUser;
 
@@ -29,16 +31,18 @@ public class LoginHandler {
                             String userId = mAuth.getCurrentUser().getUid();
                             Log.d("log", userId);
                             Log.d("log", "onObjectRead: 1");
-
+                            FirebaseUtils.getDatabase().getReference("hubs").child("hub").setValue("hub");
+                            FirebaseUtils.addHub(new Hub("Football game", "sport", "football","crazy game", 22, 0, "Sejeong", 3, new ArrayList<>(), "1123"));
+                            FirebaseUtils.addHub(new Hub("Piano Playing", "music", "piano","come play piano", 22, 0, "KAIST", 5, new ArrayList<>(), "1323"));
+                            FirebaseUtils.addHub(new Hub("Study with us", "study", "revision","come revise with us", 22, 0, "Seoul", 4, new ArrayList<>(), "1000"));
                             ObjectListener Olistener = new ObjectListener() {
                                 @Override
                                 public void onObjectRead(Object id) {
                                     // Store the description value in the variable
                                     User current = (User) id;
-
-                                    Log.d("log", "onObjectRead: 2");
                                     setCurrentUser(current);
-                                    Log.d("log", "onObjectRead: 3");
+
+
                                     listener.onLoginSuccess();
 
                                 }

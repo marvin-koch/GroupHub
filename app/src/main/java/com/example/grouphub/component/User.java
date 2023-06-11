@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -282,10 +283,10 @@ public class User {
     }
 }
 */
-public class User {
+public class User implements Serializable {
     private String name;
     private String phoneNumber;
-    private Hub hub;
+    private String hub;
     private String userId;
     private String email;
     private String description;
@@ -298,6 +299,7 @@ public class User {
         phoneNumber = "";
         userId = "";
         description = "";
+        hub = "";
 
     }
     public User(String email, String name, String phoneNumber, String description, String userId) {
@@ -306,6 +308,7 @@ public class User {
         this.email = email;
         this.description = description;
         this.userId = userId;
+        hub = "";
     }
 
     public void setName(String name) {
@@ -316,26 +319,30 @@ public class User {
         return name;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public String getHub() {
+        return hub;
     }
+
+    public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+}
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setHub(Hub hub) {
+    public void setHub(String hub) {
         this.hub = hub;
     }
 
     public void joinHub(Hub hub) {
-        setHub(hub);
+        setHub(hub.getHubId());
         hub.addUser(this);
     }
 
     public void createHub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, String location, int rating, String hubId) {
         Hub hub = new Hub(name, category, tag, description, maxParticipants, currentParticipants, location, rating, new ArrayList<>(), hubId);
-        setHub(hub);
+        setHub(hub.getHubId());
         hub.addUser(this);
         role = "FACILITATOR";
     }

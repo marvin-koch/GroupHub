@@ -49,6 +49,8 @@ public class LoginPage extends Activity {
                         // User registration success
 
                         Intent intent = new Intent(LoginPage.this, MainActivity.class);
+                        intent.putExtra("currentuser", LoginHandler.currentUser);
+
                         startActivity(intent);
 
                         // Additional user data is already stored in the database
