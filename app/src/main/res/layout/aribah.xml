@@ -9,14 +9,14 @@
 
     <EditText
         android:inputType="text"
-        android:id="@+id/editTextUsername"
+        android:id="@+id/editkeywords"
         android:layout_width="210dp"
         android:layout_height="50dp"
         android:hint="@string/username"
         android:autofillHints="Username" />
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/editgroupdesc"
         android:layout_width="210dp"
         android:layout_height="50dp"
         android:hint="@string/password"

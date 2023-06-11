@@ -22,4 +22,6 @@
     <string name="don_t_have_an_account_click_here">Don\'t have an account? Click here.</string>
     <string name="sign_up" />
     <string name="already_have_an_account_click_here" />
+    <string name="groupname">groupname</string>
+    <string name="description">description\n\n\n</string>
 </resources>

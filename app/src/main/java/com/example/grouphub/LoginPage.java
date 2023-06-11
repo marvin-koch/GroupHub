@@ -15,7 +15,7 @@ public class LoginPage extends Activity {
         Button buttonLogin = findViewById(R.id.buttonLogin);
 
         buttonLogin.setOnClickListener(v -> {
-            EditText editTextUsername = findViewById(R.id.editTextUsername);
+            EditText editTextUsername = findViewById(R.id.editkeywords);
             String usernameInput = editTextUsername.getText().toString();
             if (usernameInput.matches(".*[\\\\/:*?|<>\"].*")) {
                 // The username contains invalid characters
@@ -25,7 +25,7 @@ public class LoginPage extends Activity {
                 // send username to DB
             }
 
-            EditText editTextPassword = findViewById(R.id.editTextPassword);
+            EditText editTextPassword = findViewById(R.id.editgroupdesc);
             String passwordInput = editTextPassword.getText().toString();
             if (passwordInput.length() < 8) {
                 editTextPassword.setError("Password must be at least 8 characters long");

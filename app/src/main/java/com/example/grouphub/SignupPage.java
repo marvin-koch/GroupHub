@@ -15,7 +15,7 @@ public class SignupPage extends Activity {
         Button buttonSignup = findViewById(R.id.buttonSignup);
 
         buttonSignup.setOnClickListener(v -> {
-            EditText editTextUsername = findViewById(R.id.editTextUsername);
+            EditText editTextUsername = findViewById(R.id.editkeywords);
             String usernameInput = editTextUsername.getText().toString();
             if (usernameInput.matches(".*[\\\\/:*?|<>\"].*")) {
                 // The username contains invalid characters
@@ -29,7 +29,7 @@ public class SignupPage extends Activity {
                 // send username to DB
             }
 
-            EditText editTextPassword = findViewById(R.id.editTextPassword);
+            EditText editTextPassword = findViewById(R.id.editgroupdesc);
             String passwordInput = editTextPassword.getText().toString();
             if (passwordInput.length() < 8) {
                 editTextPassword.setError("Password must be at least 8 characters long");
@@ -46,13 +46,13 @@ public class SignupPage extends Activity {
                 // send password to DB
             }
 
-            EditText editTextPhone = findViewById(R.id.editTextPhone);
+            EditText editTextPhone = findViewById(R.id.editkeyword);
             String phoneInput = editTextPhone.getText().toString();
             // add phone number to DB
 
         });
 
-        View textViewLogin = findViewById(R.id.textViewLogin);
+        View textViewLogin = findViewById(R.id.groupgoback);
         textViewLogin.setOnClickListener(v -> {
             Intent intent = new Intent(SignupPage.this, LoginPage.class);
             startActivity(intent);

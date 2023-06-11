@@ -11,17 +11,17 @@
         android:id="@+id/editkeywords"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:autofillHints="Username"
-        android:hint="@string/username"
+        android:autofillHints="Group name"
+        android:hint="@string/groupname"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/editgroupdesc"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:autofillHints="Password"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
+        android:autofillHints="Description"
+        android:hint="@string/description"
+        android:inputType="textLongMessage" />
 
     <EditText
         android:id="@+id/editkeyword"
@@ -37,8 +37,8 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#ebe5a4"
-        android:text="@string/sign_up"
-        android:hint="SIGN UP"
+        android:hint="CREATE GROUP"
+        android:text="CREATE GROUP"
         android:textColor="#000000"
         app:cornerRadius="10dp" />
 
@@ -47,8 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/already_have_an_account_click_here"
-        android:hint="Already have an account? Click here."
+        android:hint="Want to join the group instead? Click here"
+        android:text="Want to join the group instead? Click here"
         android:textColor="#0000FF"
         android:textSize="16sp" />
 

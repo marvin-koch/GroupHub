@@ -124,7 +124,7 @@ public class group extends Activity {
         ib.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent Intent = new Intent(group.this, placeholder.class);
+                Intent Intent = new Intent(group.this, MainActivity.class);
                 startActivity(Intent);
             }
         });
