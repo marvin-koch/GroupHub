@@ -38,6 +38,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -130,6 +131,18 @@ public class MainActivity extends AppCompatActivity {
 
                 });
 
+                ImageButton plus = findViewById(R.id.create_group_button);
+                plus.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Intent intent = new Intent(MainActivity.this, group_maker.class);
+                        intent.putExtra("user", current);
+                        startActivity(intent);
+                    }
+                });
+
+
 
                 CircleImageView profileImage = findViewById(R.id.profile_image);
                 profileImage.setOnClickListener(new View.OnClickListener() {
@@ -169,6 +182,44 @@ public class MainActivity extends AppCompatActivity {
                         tag2.setText(secondhub.getTag());
                         tag3.setText(thirdhub.getTag());
 
+                name1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Log.d("main", current.getName());
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", firsthub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+                name2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", secondhub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+                name3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", thirdhub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+
 
                     }
                 });
@@ -196,6 +247,44 @@ public class MainActivity extends AppCompatActivity {
                         tag1.setText(firsthub.getTag());
                         tag2.setText(secondhub.getTag());
                         tag3.setText(thirdhub.getTag());
+
+                name1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Log.d("main", current.getName());
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", firsthub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+                name2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", secondhub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+                name3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", thirdhub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
 
 
                     }
@@ -227,6 +316,44 @@ public class MainActivity extends AppCompatActivity {
                         tag2.setText(secondhub.getTag());
                         tag3.setText(thirdhub.getTag());
 
+                name1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Log.d("main", current.getName());
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", firsthub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+                name2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", secondhub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+                name3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", thirdhub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+
 
                     }
                 });
@@ -255,6 +382,44 @@ public class MainActivity extends AppCompatActivity {
                         tag1.setText(firsthub.getTag());
                         tag2.setText(secondhub.getTag());
                         tag3.setText(thirdhub.getTag());
+
+                name1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Log.d("main", current.getName());
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", firsthub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+                name2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", secondhub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
+                name3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        User current = (User) getIntent().getSerializableExtra("currentuser");
+                        Intent intent = new Intent(MainActivity.this, group.class);
+                        intent.putExtra("hub", thirdhub);
+                        intent.putExtra("currentuser", current);
+                        startActivity(intent);
+
+                    }
+
+                });
 
 
                     }

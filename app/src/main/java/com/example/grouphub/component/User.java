@@ -75,11 +75,18 @@ public class User implements Serializable {
         hub.addUser(this);
     }
 
-    public void createHub(String name, String category, String tag, String description, int maxParticipants, int currentParticipants, String location, int rating, String hubId) {
-        Hub hub = new Hub(name, category, tag, description, maxParticipants, currentParticipants, location, rating, new ArrayList<>(), hubId);
+    public void createHub(Hub hub){
         setHub(hub.getHubId());
         hub.addUser(this);
         role = "FACILITATOR";
+    }
+    public void leaveHub(Hub leavehub){
+        if(leavehub.getHubId().equals(hub)){
+           setHub("");
+           leavehub.removeUser(this);
+           role = "FACILITATOR";
+        }
+
     }
 
     public void setDescription(String description) {

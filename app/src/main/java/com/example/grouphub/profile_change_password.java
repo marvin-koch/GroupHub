@@ -1,5 +1,6 @@
 package com.example.grouphub;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -12,6 +13,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.grouphub.component.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class profile_change_password extends AppCompatActivity {
 
@@ -38,12 +45,10 @@ public class profile_change_password extends AppCompatActivity {
             EditText new_password = findViewById(R.id.editTextPassword);
             EditText confirm_password = findViewById(R.id.editTextPhone);
             String old_password = editTextPassword.getText().toString();
-            String current_password = "!Test123";
             String passwordInput = new_password.getText().toString();
             String passwordConfirm = confirm_password.getText().toString();
-            if (!old_password.equals(current_password)) {
-                editTextPassword.setError("Incorrect password");
-            } else if (passwordInput.length() < 8) {
+
+            if (passwordInput.length() < 8) {
                 new_password.setError("Password must be at least 8 characters long");
             } else if (!passwordInput.matches(".*[a-z].*")) {
                 new_password.setError("Password must contain at least one lowercase letter");
@@ -58,7 +63,40 @@ public class profile_change_password extends AppCompatActivity {
             } else {
                 // new password is valid
                 // update password change to db
-                finish();
+                FirebaseUser firebaseuser = FirebaseAuth.getInstance().getCurrentUser();
+                AuthCredential credential = EmailAuthProvider.getCredential(firebaseuser.getEmail(), old_password);
+                firebaseuser.reauthenticate(credential)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    // User reauthenticated successfully
+                                    // Proceed to change the password
+
+                                    firebaseuser.updatePassword(passwordInput)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        // Password updated successfully
+                                                        // Inform the user about the password change
+                                                        Intent Intent = new Intent(profile_change_password.this, profile_edit.class);
+                                                        Intent.putExtra("user", user);
+                                                        startActivity(Intent);
+
+                                                    } else {
+                                                        // Password update failed
+                                                        // Handle the error
+                                                    }
+                                                }
+                                            });
+                                } else {
+                                    // Reauthentication failed
+                                    // Handle the error
+                                    editTextPassword.setError("Incorrect password");
+                                }
+                            }
+                        });
             }
 
         });

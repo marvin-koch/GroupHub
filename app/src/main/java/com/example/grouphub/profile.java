@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.grouphub.component.FirebaseUtils;
 import com.example.grouphub.component.Hub;
 import com.example.grouphub.component.LoginHandler;
+import com.example.grouphub.component.ObjectListener;
 import com.example.grouphub.component.User;
 
 public class profile extends AppCompatActivity {
@@ -117,22 +118,40 @@ public class profile extends AppCompatActivity {
     group_list.setOnClickListener(new View.OnClickListener() {
 
         public void onClick(View v) {
-            if (LoginHandler.currentUser.getHub() != null){
-                Intent Intent = new Intent(profile.this, profile_view_groups.class);
-                getIntent().putExtra("hub", LoginHandler.currentUser.getHub());
-                startActivity(Intent);
-            }else{
-                AlertDialog.Builder builder = new AlertDialog.Builder(profile.this);
-                builder.setTitle("Button Clicked")
-                        .setMessage("You haven't joined a group")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Perform any additional actions or dismiss the dialog
-                                dialog.dismiss();
-                            }
-                        })
-                        .show();
-            }
+            String hubId = user.getHub();
+            FirebaseUtils.getHub(new ObjectListener() {
+                @Override
+                public void onObjectRead(Object o) {
+                    Hub hub = (Hub) o;
+
+                    if (hubId != ""){
+                        Intent Intent = new Intent(profile.this, profile_view_groups.class);
+                        Intent.putExtra("hub", hub);
+                        Intent.putExtra("user", user);
+
+                        startActivity(Intent);
+                    }else{
+                        AlertDialog.Builder builder = new AlertDialog.Builder(profile.this);
+                        builder.setTitle("Button Clicked")
+                                .setMessage("You haven't joined a group")
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // Perform any additional actions or dismiss the dialog
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .show();
+                    }
+                }
+
+                @Override
+                public void onObjectReadError(Object o) {
+
+                }
+
+
+            }, hubId);
+
         }
     });
     return_to_main.setOnClickListener(new View.OnClickListener() {
