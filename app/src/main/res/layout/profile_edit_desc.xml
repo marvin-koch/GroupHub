@@ -8,6 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_desc_popup"
-        android:hint="Current description"
+        android:hint="New Description"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

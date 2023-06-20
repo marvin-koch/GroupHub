@@ -8,6 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_contact_popup"
-        android:hint="Current contact info"
+        android:hint="New Contact Info"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
