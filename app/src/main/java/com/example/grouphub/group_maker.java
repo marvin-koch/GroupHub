@@ -57,9 +57,12 @@ public class group_maker extends Activity {
         });
 
             View textViewLogin = findViewById(R.id.groupgoback);
-            textViewLogin.setOnClickListener(z -> {
-                Intent intent = new Intent(group_maker.this, MainActivity.class);
-                startActivity(intent);
+            textViewLogin.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+//                    Intent intent = new Intent(group_maker.this, MainActivity.class);
+//                    startActivity(intent);
+                    finish();
+                }
             });
 
     }
